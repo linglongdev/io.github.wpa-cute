@@ -1,0 +1,42 @@
+From a795e6f8bbff5fff1aad41cf8f97b26c8773b56f Mon Sep 17 00:00:00 2001
+From: wjyrich <1071633242@qq.com>
+Date: Tue, 6 Aug 2024 21:15:52 +0800
+Subject: [PATCH] install
+
+---
+ src/wpa-cute.desktop | 2 +-
+ src/wpa_gui.pro      | 7 +++++++
+ 2 files changed, 8 insertions(+), 1 deletion(-)
+
+diff --git a/src/wpa-cute.desktop b/src/wpa-cute.desktop
+index 1158af2..1a8a2c2 100644
+--- a/src/wpa-cute.desktop
++++ b/src/wpa-cute.desktop
+@@ -3,7 +3,7 @@ Version=1.0
+ Name=wpaCute
+ Comment=Graphical Qt user interface for wpa_supplicant
+ Exec=wpa-cute
+-Icon=wpa-cute
++Icon=wpa_gui
+ GenericName=WLAN Config
+ Terminal=false
+ Type=Application
+diff --git a/src/wpa_gui.pro b/src/wpa_gui.pro
+index 25e183e..0a8fc35 100644
+--- a/src/wpa_gui.pro
++++ b/src/wpa_gui.pro
+@@ -80,3 +80,10 @@ unix {
+   MOC_DIR = .moc
+   OBJECTS_DIR = .obj
+ }
++target.path = $$PREFIX/bin
++desktop.files = wpa-cute.desktop
++desktop.path = $$PREFIX/share/applications/
++icons.path = $$PREFIX/share/icons
++icons.files = icons/wpa_gui.png
++
++INSTALLS += target desktop icons
+\ No newline at end of file
+-- 
+2.43.4
+
