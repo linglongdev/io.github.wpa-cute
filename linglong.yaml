@@ -1,0 +1,29 @@
+version: "1"
+
+package:
+  id: io.github.wpa-cute
+  name: wpa-cute
+  version: 0.0.8.5
+  kind: app
+  description: |
+    A graphical wpa_supplicant front end
+
+command:
+  - /opt/apps/io.github.wpa-cute/files/bin/wpa-cute
+
+base: org.deepin.foundation/23.0.0
+runtime: org.deepin.Runtime/23.0.1
+
+sources:
+  - kind: git
+    url: https://github.com/loh-tar/wpa-cute.git
+    version: master
+    commit: abd8807cffa27c318e558766fec5f255fe78ddb8
+
+
+build: |
+  cd /project/linglong/sources/wpa-cute.git/src
+  git apply ../../../../0001-install.patch
+  qmake -makefile PREFIX=${PREFIX} LIB_INSTALL_DIR=${PREFIX}/lib/${TRIPLET}
+  make
+  make install
